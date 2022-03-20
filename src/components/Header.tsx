@@ -1,10 +1,8 @@
-import { Avatar, Box, Flex, HStack, Icon, Input, Text } from "@chakra-ui/react";
-import {
-  RiNotification2Line,
-  RiNotificationLine,
-  RiSearchLine,
-  RiUserAddLine,
-} from "react-icons/ri";
+import { Flex } from "@chakra-ui/react";
+import { Logo } from "./Header/Logo";
+import { NotificationNav } from "./Header/NotificationsNav";
+import { Profile } from "./Header/Profile";
+import { SearchBox } from "./Header/SearchBox";
 
 export function Header() {
   return (
@@ -18,64 +16,13 @@ export function Header() {
       align="center"
       px="6"
     >
-      <Text fontSize="3xl" fontWeight="bold" letterSpacing="tight" w="64">
-        dashgo
-        <Text color="pink.500" as="span" ml="1">
-          .
-        </Text>
-      </Text>
+      <Logo />
 
-      <Flex
-        as="label"
-        flex="1"
-        py="4"
-        px="8"
-        ml="6"
-        maxWidth={400}
-        alignSelf="center"
-        color="gray.200"
-        position="relative"
-        bg="gray.800"
-        borderRadius="full"
-        align="center"
-      >
-        <Input
-          color="gray.50"
-          variant="unstyled"
-          placeholder="Buscar na plataforma"
-          px="4"
-          mr="4"
-          _placeholder={{ color: "gray.400" }}
-        />
-        <Icon as={RiSearchLine} fontSize="20"></Icon>
-      </Flex>
+      <SearchBox />
 
       <Flex align="center" ml="auto">
-        <HStack
-          spacing="8"
-          mx="8"
-          pr="8"
-          py="1"
-          color="gray.300"
-          borderRightWidth={1}
-          borderColor="gray.700"
-        >
-          <Icon as={RiNotificationLine} fontSize="20"></Icon>
-          <Icon as={RiUserAddLine} fontSize="20"></Icon>
-        </HStack>
-        <Flex align="center">
-          <Box mr="4" textAlign="right">
-            <Text>Leonardo Csik Peres</Text>
-            <Text color="gray.300" fontSize="small">
-              leonardocsikperes@gmail.com
-            </Text>
-          </Box>
-          <Avatar
-            size="md"
-            name="Leonardo Csik Peres"
-            src="https://github.com/leocperes.png"
-          />
-        </Flex>
+        <NotificationNav />
+        <Profile />
       </Flex>
     </Flex>
   );

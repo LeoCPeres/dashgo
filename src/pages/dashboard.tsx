@@ -53,7 +53,7 @@ const options = {
       opacityTo: 0.3,
     },
   },
-};
+} as const;
 
 const series = [
   {

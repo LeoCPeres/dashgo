@@ -31,7 +31,7 @@ export function makeServer() {
 
     //injeta os dados no banco ao ser criado
     seeds(server) {
-      server.createList("user", 200);
+      server.createList("user", 10);
     },
 
     //seta as rotas da fakeapi

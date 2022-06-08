@@ -21,9 +21,7 @@ export const InputBase: ForwardRefRenderFunction<
     <FormControl isInvalid={!!error}>
       {!!label && <FormLabel htmlFor={name}>{label}</FormLabel>}
       <ChakraInput
-        name="email"
         id={name}
-        type="email"
         focusBorderColor="pink.500"
         bg="gray.900"
         variant="filled"

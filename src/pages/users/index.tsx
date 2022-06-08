@@ -16,44 +16,15 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
 
-import { useQuery } from "react-query";
-import { api } from "../../services/api";
+import { useUsers } from "../../services/hooks/useUsers";
 
 export default function UserList() {
-  const [users, setUsers] = useState([]);
-
-  const { data, isLoading, error, isFetching } = useQuery(
-    "users",
-    async () => {
-      const { data } = await api.get("users");
-
-      const fetchedUsers = data.users.map((user) => {
-        return {
-          isSelected: false,
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          createdAt: new Date(user.createdAt).toLocaleDateString("pt-BR", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
-          }),
-        };
-      });
-
-      setUsers(fetchedUsers);
-      return fetchedUsers;
-    },
-    {
-      staleTime: 1000 * 5, //5 seconds
-    }
-  );
+  const { data, isLoading, error, isFetching } = useUsers();
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -111,14 +82,11 @@ export default function UserList() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {users.map((user) => {
+                  {data.map((user) => {
                     return (
                       <Tr key={user.id}>
                         <Td px={["4", "4", "6"]}>
-                          <Checkbox
-                            colorScheme="pink"
-                            isChecked={user.isSelected}
-                          />
+                          <Checkbox colorScheme="pink" />
                         </Td>
                         <Td>
                           <Box>
